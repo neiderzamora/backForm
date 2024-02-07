@@ -15,13 +15,13 @@ def send_confirmation_email(full_name, email, phone, type_doc, doc_number, occup
     email.send()
 
     # Send email to manager
-    manager_email = 'mediafirecuenta13@gmail.com'
+    manager_email = '13mediafirecuenta@gmail.com'
     submanager_email = 'iproofpython@gmail.com'
     manager_subject = 'Nuevo usuario registrado'
 
     manager_message_html = format_html('''
         <html><div style="margin:auto;max-width:600px;padding-top:50px" class="m_-6687661799313084825email-container"><table role="presentation" id="m_-6687661799313084825logoContainer" style="background:#252f3d;border-radius:3px 3px 0 0;max-width:600px" width="100%" cellspacing="0" cellpadding="0" align="center"><tbody><tr><td style="background:#c5c5c5;border-radius:3px 3px 0 0;padding:20px 0 10px 0;text-align:center"><img src="https://www.hygmicropigmentacion.com/wp-content/uploads/2022/08/Trasparente-Oscuro.png" alt="AWS logo" style="font-family:sans-serif;font-size:15px;line-height:140%;color:#555" data-bit="iit" width="65" height="65" border="0"></td></tr></tbody></table><table style="border:0;border-bottom:1px solid #d6d6d6;max-width:600px" width="100%" cellspacing="0" cellpadding="0" align="center"><tbody><tr><td style="background-color:#fff;color:#444;font-family:'Amazon Ember','Helvetica Neue',Roboto,Arial,sans-serif;font-size:14px;line-height:140%;padding:25px 35px"><h1 style="font-size:20px;font-weight:700;line-height:1.3;margin:0 0 15px 0">Nuevo usuario registrado</h1><p style="margin:0;padding:0">Nombre : {full_name}<br>Correo electrónico : {email}<br>Número de WhatsApp : {phone}<br>Tipo de documento : {type_doc}<br>Número de documento : {doc_number}<br>Profesión / Estudio realizado : {occupation}<br>Genero : {gender}<br>Plan Seleccionado : {select_plan}</p><p style="margin:0;padding:0"></p></td></tr></tbody></table><table style="max-width:600px" width="100%" cellspacing="0" cellpadding="0" align="center"><tbody><tr><td style="color:#777;font-family:'Amazon Ember','Helvetica Neue',Roboto,Arial,sans-serif;font-size:12px;line-height:16px;padding:20px 30px;text-align:center">Este mensaje fue producido y creado por H&G Micropigmentación. © 2024, Todos los derechos reservados. Si deseas ver más detalles de la reserva creada, ingresa<a href="https://www.hygmicropigmentacion.com/" target="_blank">aquí</a>.</td></tr></tbody></table></div></html>
-    ''', full_name=full_name, email=email, type_doc=type_doc, phone=phone, doc_number=doc_number, occupation=occupation, gender=gender, select_plan=select_plan, created_at=created_at)
+    ''', full_name=full_name, email=email, type_doc=type_doc, phone=phone, doc_number=doc_number, occupation=occupation, gender=gender, select_plan=select_plan)
 
     manager_email = EmailMultiAlternatives(manager_subject, '', 'contacto@hygmicropigmentacion.com', [manager_email, submanager_email])
     manager_email.attach_alternative(manager_message_html, "text/html")

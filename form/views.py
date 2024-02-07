@@ -7,6 +7,7 @@ from .models import Form
 from .email import *
 from .serializers import FormSerializer
 from datetime import datetime, time, timedelta
+from django.core.mail import send_mail
 
 from django.http import HttpResponse
 
@@ -31,7 +32,7 @@ class FormCreate(APIView):
             gender = serializer.validated_data['gender']
             select_plan = serializer.validated_data['select_plan']
             
-            send_confirmation_email(full_name, phone, email, type_doc, doc_number, occupation, gender, select_plan)
+            send_confirmation_email(full_name, email, phone, type_doc, doc_number, occupation, gender, select_plan)
 
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
