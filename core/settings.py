@@ -81,6 +81,15 @@ DATABASES = {
         default='mysql://root:1007397230@localhost:3306/form',
         conn_max_age=600)}
 
+# Configuration email
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = os.environ.get('EMAIL_HOST')
+EMAIL_PORT = int(os.environ.get('EMAIL_PORT', default=465))
+EMAIL_USE_SSL = bool(os.environ.get('EMAIL_USE_SSL', default=True))
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
 
 AUTH_PASSWORD_VALIDATORS = [
     {
