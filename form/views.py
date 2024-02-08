@@ -30,9 +30,8 @@ class FormCreate(APIView):
             doc_number = serializer.validated_data['doc_number']
             occupation = serializer.validated_data['occupation']
             gender = serializer.validated_data['gender']
-            select_plan = serializer.validated_data['select_plan']
             
-            send_confirmation_email(full_name, email, phone, type_doc, doc_number, occupation, gender, select_plan)
+            send_confirmation_email(full_name, email, phone, type_doc, doc_number, occupation, gender)
 
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
